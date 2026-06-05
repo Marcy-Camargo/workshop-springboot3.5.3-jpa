@@ -1,5 +1,6 @@
 package com.educandoweb.course.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.educandoweb.course.entities.pk.OrderItemPK;
@@ -11,8 +12,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrderItem {
-	
+public class OrderItem implements Serializable{	
+	private static final long serialVersionUID = 1L;
+
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();
 	
@@ -38,6 +40,7 @@ public class OrderItem {
 	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
+	
 	
 	public Product getProduct() {
 		return id.getProduct();
